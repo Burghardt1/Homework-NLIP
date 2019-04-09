@@ -36,9 +36,11 @@ selected = SelectFromModel(classif, prefit=True)
 x_matrix_new = selected.transform(x_matrix)
 x_matrix_new.shape
 
+X_train, X_test, y_train, y_test = train_test_split(x_matrix_new, y_vector, test_size=0.33, random_state=42,shuffle=True)
+
 #############
 
-X_train, X_test, y_train, y_test = train_test_split(x_matrix_new, y_vector, test_size=0.33, random_state=42,shuffle=True)
+
 
 classif_LR = LogisticRegression()
 classif_KN = KNeighborsClassifier()
@@ -47,19 +49,14 @@ classif_RF = RandomForestClassifier()
 ###############Log
     
 classif_LR.fit(X_train, y_train)
-y_pred_LR= classif_LR.predict(X_test)
 
 #############KNeighbours
 
 classif_KN.fit(X_train, y_train)
-y_pred_DT= classif_KN.predict(X_test)
-
 
 ############Random Forest
 
 classif_RF.fit(X_train, y_train)
-y_pred_RF= classif_RF.predict(X_test)
-
 
 ###########Cross validation
 

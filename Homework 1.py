@@ -29,11 +29,11 @@ x_matrix = sc.transform(x_matrix)
 
 ############feature selection
 
-clf = ExtraTreesClassifier(n_estimators=100)
-clf = clf.fit(x_matrix, y_vector)
-clf.feature_importances_  
-model = SelectFromModel(clf, prefit=True)
-x_matrix_new = model.transform(x_matrix)
+classif = ExtraTreesClassifier(n_estimators=100)
+classif = classif.fit(x_matrix, y_vector)
+classif.feature_importances_  
+selected = SelectFromModel(classif, prefit=True)
+x_matrix_new = selected.transform(x_matrix)
 x_matrix_new.shape
 
 #############
